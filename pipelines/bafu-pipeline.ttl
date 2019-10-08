@@ -19,160 +19,18 @@ _:common-vars :variable
 
 <#Root> a :Pipeline, :Readable ;
   :steps [
-    :stepList (
-      [ a :Step ;
-        code:implementedBy [ a code:EcmaScript; code:link <file:../lib/sequence> ];
-        code:arguments ( <#download_px_files> <#TransformFiles> ) ]
+        :stepList ( <#readFile> <#parse> )
+    ] .
 
-    ) ] .
-
-# ------------------------------
-#
-# Download pipeline
-#
-# Downloads the zip and extracts contents to ${sourceDir}
-#
-# ------------------------------
-
-<#download_px_files> a :Pipeline, :Readable ;
-  :steps [
-      :stepList ( <#downloadPX_Files> )
-    ] ;
-  :variables _:common-vars .
-
-<#downloadPX_Files> a :Step ;
-  code:implementedBy
-    [
-      code:link <file:../lib/px#fetch> ;
-      a code:EcmaScript
-    ] ;
-  code:arguments (
-    "sourceDir"^^:VariableName
-	"basicfile"^^:VariableName
-   ) .
-# ------------------------------
-#
-# Transform pipeline
-#
-# One-by-one parses and transforms the source csv files to RDF
-#
-# ------------------------------
-
-<#TransformFiles> a :Pipeline, :Readable ;
-  :steps [
-      :stepList ( <#readDir> <#doTransform> )
-    ] ;
-  :variables _:common-vars .
-
-<#readDir> a :Step ;
-  code:implementedBy
-    [
-      code:link <file:../lib/dir#iterateFiles> ;
-      a code:EcmaScript
-    ] ;
-  code:arguments (
-    "mappingsDir"^^:VariableName
-   ) .
-
-<#doTransform> a :Step ;
+<readFile> a :Step;
   code:implementedBy [
-      code:link <node:barnard59-core#forEach> ;
-      a code:EcmaScript
-    ] ;
-  code:arguments (
-    <#TransformCsv>
-    "(p, fileName) => { p.variables.set('csvw', fileName) }"^^code:EcmaScript
-  ) .
-
-# ------------------------------
-#
-# Transforms individual files
-#
-# ------------------------------
-
-<#TransformCsv> a :Pipeline ;
-  :steps
-    [
-#      :stepList ( <#openCsv> <#parse> <#municipalityLookup> <filterNotCsvw> <#serialize> <#save> )
-      :stepList ( <#openCsv> <#parse> <filterNotCsvw> <#serialize> <#save> )
-
-    ] ;
-  :variables _:common-vars.
-
-<#openCsv> a :Step ;
+    code:link <node:fs#createReadStream>;
+    a code:EcmaScript
+  ];
+  code:arguments ("basicfile"^^:VariableName).
+  
+<parse> a :Step;
   code:implementedBy [
-      code:link <file:../lib/csv#openFromCsvw> ;
-      a code:EcmaScript
-    ] ;
-  code:arguments ( "metadata/${csvw}"^^code:EcmaScriptTemplateLiteral ) .
-
-<#parse> a :Step;
-  code:implementedBy
-    [
-      code:link <node:barnard59-formats#csvw.parse>;
-      a code:EcmaScript
-    ];
-  code:arguments ( <#parseMetadata> ).
-
-<#parseMetadata> a :Pipeline, :ReadableObjectMode;
-  :steps
-    [
-      :stepList ( <#readMetadata> <#parseMetadataStep> )
-    ].
-
-<#readMetadata> a :Step;
-  code:implementedBy
-    [
-      code:link <node:fs#createReadStream>;
-      a code:EcmaScript
-    ];
-  code:arguments ("metadata/${csvw}"^^code:EcmaScriptTemplateLiteral).
-
-<#parseMetadataStep> a :Step;
-  code:implementedBy
-    [
-      code:link <node:barnard59-formats#jsonld.parse>;
-      a code:EcmaScript
-    ].
-
-<#municipalityLookup> a :Step ;
-  code:implementedBy
-    [
-      code:link <node:barnard59-base#map> ;
-      a code:EcmaScript
-    ] ;
-  code:arguments (
-    [
-      code:link <file:../lib/municipality-lookup.js> ;
-      a code:EcmaScript
-    ]
-  ) .
-
-<filterNotCsvw> a :Step;
-  code:implementedBy [ a code:EcmaScript;
-    code:link <node:barnard59-base#filter>
- ];
- code:arguments ( """quad => {
-    if (quad.predicate.value.startsWith('http://www.w3.org/ns/csvw#')) {
-	 return false
-	}
-	if (quad.predicate.value === 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type' && quad.object.value.startsWith('http://www.w3.org/ns/csvw#')) {
-	 return false
-	}
-	return true
-	}"""^^code:EcmaScript ).
-
-<#serialize> a :Step;
-  code:implementedBy
-    [
-      code:link <node:barnard59-formats#ntriples.serialize> ;
-      a code:EcmaScript
-    ].
-
-<#save> a :Step;
-  code:implementedBy
-    [
-      code:link <node:fs#createWriteStream>;
-      a code:EcmaScript
-    ];
-  code:arguments ("${targetDir}/${csvw.replace('.csv.meta.json', '')}.nt"^^code:EcmaScriptTemplateLiteral).
+    code:link <node:barnard59-base#json.parse>;
+    a code:EcmaScript
+  ].
