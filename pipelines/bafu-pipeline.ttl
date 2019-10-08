@@ -6,9 +6,7 @@
 _:common-vars :variable
   [ a :Variable; :name "targetDir"; :value "target" ] ,
   [ a :Variable; :name "mappingsDir"; :value "metadata" ],
-  [ a :Variable; :name "sourceDir"; :value "source" ] ,
-  [ a :Variable; :name "basicfile"; :value "../source/pxfiles.json" ] .
-
+  [ a :Variable; :name "sourceDir"; :value "source" ] .
 # ------------------------------
 #
 # Root pipeline
@@ -19,18 +17,24 @@ _:common-vars :variable
 
 <#Root> a :Pipeline, :Readable ;
   :steps [
-        :stepList ( <#readFile> <#parse> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>)
     ] .
 
-<readFile> a :Step;
+<#readFile> a :Step;
   code:implementedBy [
     code:link <node:fs#createReadStream>;
     a code:EcmaScript
   ];
-  code:arguments ("basicfile"^^:VariableName).
+  code:arguments ("source/pxfiles.json"^^:VariableName).
   
-<parse> a :Step;
+<#parseJson> a :Step;
   code:implementedBy [
     code:link <node:barnard59-base#json.parse>;
+    a code:EcmaScript
+  ].
+
+<#transformChunk> a :Step;
+  code:implementedBy [
+    code:link <file:../lib/chunk#separate> ;
     a code:EcmaScript
   ].
