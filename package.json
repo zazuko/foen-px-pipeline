@@ -22,6 +22,8 @@
   "dependencies": {
     "barnard59": "0.0.5",
     "barnard59-formats": "0.0.6",
+    "barnard59-http": "0.0.1",
+    "barnard59-px": "0.0.1",
     "csv-parser": "^2.3.1",
     "csv-stream": "^0.2.0",
     "csvtojson": "^2.0.0",

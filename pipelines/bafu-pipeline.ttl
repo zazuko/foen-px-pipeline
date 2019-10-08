@@ -17,7 +17,7 @@ _:common-vars :variable
 
 <#Root> a :Pipeline, :Readable ;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>)
+        :stepList ( <#readFile> <#parseJson> <#transformChunk> <#doTransform>)
     ] .
 
 <#readFile> a :Step;
@@ -32,9 +32,41 @@ _:common-vars :variable
     code:link <node:barnard59-base#json.parse>;
     a code:EcmaScript
   ].
-
-<#transformChunk> a :Step;
+  
+<#transformChunk> a :Step ;
+  code:implementedBy
+    [
+      code:link <file:../lib/chunk.js> ;
+      a code:EcmaScript
+    ] .
+	
+<#doTransform> a :Step ;
   code:implementedBy [
-    code:link <file:../lib/chunk#separate> ;
-    a code:EcmaScript
-  ].
+      code:link <node:barnard59-core#forEach> ;
+      a code:EcmaScript
+    ] ;
+  code:arguments (
+    <#TransformPX>
+#	"(p, fileUrl) => { p.variables.set('px', fileUrl) }"^^code:EcmaScript
+  ) .	
+  
+# ------------------------------
+#
+# Transforms individual files
+#
+# ------------------------------
+
+<#TransformPX> a :Pipeline ;
+  :steps
+    [
+      :stepList ( <#fetch>  )
+    ] ;
+  :variables _:common-vars.
+
+<#fetch> a :Step;
+  code:implementedBy [
+    code:link <node:barnard59-http#fetch> ;
+	a code:EcmaScript
+  ] .
+ # code:arguments ( "${px}"^^code:EcmaScriptTemplateLiteral ) .
+
