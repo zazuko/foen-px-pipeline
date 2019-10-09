@@ -5,8 +5,14 @@
 
 _:common-vars :variable
   [ a :Variable; :name "targetDir"; :value "target" ] ,
-  [ a :Variable; :name "mappingsDir"; :value "metadata" ],
-  [ a :Variable; :name "sourceDir"; :value "source" ] .
+  [ a :Variable; :name "sourceFile"; :value "source/pxfiles.json" ] ,
+  [ a :Variable; :name "baseIRI"; :value "http://px.zazuko.com/bafu/" ] ,
+  [ a :Variable; :name "columns"; :value """[{
+        "titles": "Jahr",
+        "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+      }]""" ] ,
+  [ a :Variable; :name "encoding"; :value "iso-8859-15" ] .
+  
 # ------------------------------
 #
 # Root pipeline
@@ -17,15 +23,16 @@ _:common-vars :variable
 
 <#Root> a :Pipeline, :Readable ;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk> <#doTransform>)
-    ] .
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> )
+    ] ;
+:variables _:common-vars .
 
 <#readFile> a :Step;
   code:implementedBy [
     code:link <node:fs#createReadStream>;
     a code:EcmaScript
   ];
-  code:arguments ("source/pxfiles.json"^^:VariableName).
+  code:arguments ("sourceFile"^^:VariableName).
   
 <#parseJson> a :Step;
   code:implementedBy [
@@ -47,7 +54,7 @@ _:common-vars :variable
     ] ;
   code:arguments (
     <#TransformPX>
-#	"(p, fileUrl) => { p.variables.set('px', fileUrl) }"^^code:EcmaScript
+	"(p, fileUrl) => { p.variables.set('px', fileUrl) }"^^code:EcmaScript
   ) .	
   
 # ------------------------------
@@ -56,10 +63,10 @@ _:common-vars :variable
 #
 # ------------------------------
 
-<#TransformPX> a :Pipeline ;
+<#TransformPX> a :Pipeline, :Readable ;
   :steps
     [
-      :stepList ( <#fetch>  )
+      :stepList ( <#fetch> <#parse> <#serialize> <#write> )
     ] ;
   :variables _:common-vars.
 
@@ -67,6 +74,34 @@ _:common-vars :variable
   code:implementedBy [
     code:link <node:barnard59-http#fetch> ;
 	a code:EcmaScript
-  ] .
- # code:arguments ( "${px}"^^code:EcmaScriptTemplateLiteral ) .
+  ];
+  code:arguments [
+		code:name "url";
+		code:value "px"^^:VariableName
+	] .
 
+<#parse> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-px#parse>
+  ];
+  code:arguments [
+    code:name "baseIRI";
+    code:value "baseIRI"^^:VariableName
+  ], [
+    code:name "columns";
+    code:value "JSON.parse(this.variables.get('columns'))"^^code:EcmaScript
+  ], [
+    code:name "encoding";
+    code:value "encoding"^^:VariableName
+  ].
+
+<#serialize> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-formats/ntriples.js#serialize>
+  ].
+
+<#write> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:fs#createWriteStream>
+  ];
+  code:arguments ("target/px.out.nt").
