@@ -66,7 +66,7 @@ _:common-vars :variable
 <#TransformPX> a :Pipeline ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#serialize> <#write>)
+      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#serialize> <#write>)
     ] ;
   :variables _:common-vars.
 
@@ -94,6 +94,19 @@ _:common-vars :variable
     code:name "encoding";
     code:value "encoding"^^:VariableName
   ].
+  
+<#replaceDotsWithNan> a :Step ;
+  code:implementedBy [
+    code:link <node:barnard59-base#map> ;
+    a code:EcmaScript
+  ];
+  code:arguments ( """quad => {
+      const rdf = require('rdf-ext')
+	  if(quad.object.value == '"......"'){
+		return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
+	  }
+      return quad
+    }"""^^code:EcmaScript) .
 
 <#serialize> a :Step;
   code:implementedBy [ a code:EcmaScript;
