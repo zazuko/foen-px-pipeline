@@ -66,7 +66,7 @@ _:common-vars :variable
 <#TransformPX> a :Pipeline ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#serialize> <#write>)
+      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#fixIntegerToDouble> <#serialize> <#write>)
     ] ;
   :variables _:common-vars.
 
@@ -95,6 +95,23 @@ _:common-vars :variable
     code:value "encoding"^^:VariableName
   ].
   
+<#fixIntegerToDouble> a :Step ;
+  code:implementedBy [
+    code:link <node:barnard59-base#map> ;
+    a code:EcmaScript
+  ];
+  code:arguments ( """quad => {
+      const rdf = require('rdf-ext')
+	  if(typeof quad.object.datatype !== "undefined"){
+		if(quad.object.datatype.value == "http://www.w3.org/2001/XMLSchema#integer"){
+			if(quad.object.value.includes(".")){
+				return rdf.quad(quad.subject, quad.predicate, rdf.literal(quad.object.value, rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
+			}
+		}
+	  }
+      return quad
+    }"""^^code:EcmaScript) .
+  
 <#replaceDotsWithNan> a :Step ;
   code:implementedBy [
     code:link <node:barnard59-base#map> ;
@@ -103,6 +120,9 @@ _:common-vars :variable
   code:arguments ( """quad => {
       const rdf = require('rdf-ext')
 	  if(quad.object.value == '"......"'){
+		return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
+	  }
+	  if(quad.object.value == '"..."'){
 		return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
 	  }
       return quad
