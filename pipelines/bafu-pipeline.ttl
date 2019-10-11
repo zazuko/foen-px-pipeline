@@ -23,7 +23,7 @@ _:common-vars :variable
 
 <#Root> a :Pipeline, :Readable;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform>  )
     ] ;
 :variables _:common-vars .
 
@@ -63,10 +63,10 @@ _:common-vars :variable
 #
 # ------------------------------
 
-<#TransformPX> a :Pipeline, :Readable ;
+<#TransformPX> a :Pipeline ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#serialize> )
+      :stepList ( <#fetch> <#parse> <#serialize> <#write>)
     ] ;
   :variables _:common-vars.
 
@@ -104,4 +104,4 @@ _:common-vars :variable
   code:implementedBy [ a code:EcmaScript;
     code:link <node:fs#createWriteStream>
   ];
-  code:arguments ("target/px.out.nt").
+  code:arguments ("target/${px.replace('https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=', '')}.out.nt"^^code:EcmaScriptTemplateLiteral ).
