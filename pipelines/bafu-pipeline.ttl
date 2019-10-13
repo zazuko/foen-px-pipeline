@@ -6,7 +6,6 @@
 _:common-vars :variable
   [ a :Variable; :name "targetDir"; :value "target" ] ,
   [ a :Variable; :name "sourceFile"; :value "source/pxfiles.json" ] ,
-  [ a :Variable; :name "baseIRI"; :value "http://px.zazuko.com/bafu/" ] ,
   [ a :Variable; :name "columns"; :value """[{
         "titles": "Jahr",
         "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
@@ -46,7 +45,7 @@ _:common-vars :variable
       code:link <file:../lib/chunk.js> ;
       a code:EcmaScript
     ] .
-	
+  
 <#doTransform> a :Step ;
   code:implementedBy [
       code:link <node:barnard59-core#forEach> ;
@@ -54,8 +53,11 @@ _:common-vars :variable
     ] ;
   code:arguments (
     <#TransformPX>
-	"(p, fileUrl) => { p.variables.set('px', fileUrl) }"^^code:EcmaScript
-  ) .	
+  """(p, item) => {
+  p.variables.set('px', item.fileurl)
+  p.variables.set('baseIRI', item.baseIRI)
+}"""^^code:EcmaScript
+  ) . 
   
 # ------------------------------
 #
@@ -73,12 +75,12 @@ _:common-vars :variable
 <#fetch> a :Step;
   code:implementedBy [
     code:link <node:barnard59-http#fetch> ;
-	a code:EcmaScript
+  a code:EcmaScript
   ];
   code:arguments [
-		code:name "url";
-		code:value "px"^^:VariableName
-	] .
+    code:name "url";
+    code:value "px"^^:VariableName
+  ] .
 
 <#parse> a :Step;
   code:implementedBy [ a code:EcmaScript;
@@ -102,13 +104,13 @@ _:common-vars :variable
   ];
   code:arguments ( """quad => {
       const rdf = require('rdf-ext')
-	  if(typeof quad.object.datatype !== "undefined"){
-		if(quad.object.datatype.value == "http://www.w3.org/2001/XMLSchema#integer"){
-			if(quad.object.value.includes(".")){
-				return rdf.quad(quad.subject, quad.predicate, rdf.literal(quad.object.value, rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
-			}
-		}
-	  }
+    if(typeof quad.object.datatype !== "undefined"){
+    if(quad.object.datatype.value == "http://www.w3.org/2001/XMLSchema#integer"){
+      if(quad.object.value.includes(".")){
+        return rdf.quad(quad.subject, quad.predicate, rdf.literal(quad.object.value, rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
+      }
+    }
+    }
       return quad
     }"""^^code:EcmaScript) .
   
@@ -119,12 +121,12 @@ _:common-vars :variable
   ];
   code:arguments ( """quad => {
       const rdf = require('rdf-ext')
-	  if(quad.object.value == '"......"'){
-		return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
-	  }
-	  if(quad.object.value == '"..."'){
-		return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
-	  }
+    if(quad.object.value == '"......"'){
+    return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
+    }
+    if(quad.object.value == '"..."'){
+    return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
+    }
       return quad
     }"""^^code:EcmaScript) .
 

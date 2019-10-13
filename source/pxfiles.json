@@ -1,12 +1,42 @@
 [
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_124",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_123",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_122",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_121",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_106",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_112",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_105",
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_102",   
- "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_101"
-] 
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_124",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_124/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_123",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_123/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_122",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_122/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_121",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_121/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_106",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_106/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_112",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_112/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_103/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_105",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_105/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_102",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_102/"
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_101",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_101/"
+    }
+]
