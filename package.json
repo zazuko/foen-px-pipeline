@@ -1,24 +1,21 @@
 {
-  "name": "bafu-pipeline",
+  "name": "foen-px-pipeline",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "standard && jest",
-    "start": "mkdir -p target source; barnard59 run --pipeline urn:pipeline:bafu-ld#Root --format text/turtle pipelines/bafu-pipeline.ttl",
-    "clean-nt": "rm -f target/everything.nt && cat target/*.nt | sed '/_:/d' | sed '/<file/d' | sed '/#(No/d' | sed '/NULL/d'  > target/everything.nt",
+    "start": "mkdir -p target source; barnard59 run --pipeline urn:pipeline:cube-ld#Root --format text/turtle pipelines/pipeline.ttl",
     "pipeline": "npm start -- --pipeline"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/zazuko/blv-tierseuchen-ld.git"
   },
-  "author": "Tomasz Pluskiewicz <tomasz@t-code.pl>",
+  "author": "Zazuko",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zazuko/blv-tierseuchen-ld/issues"
   },
-  "homepage": "https://github.com/zazuko/blv-tierseuchen-ld#readme",
   "dependencies": {
     "barnard59": "0.0.5",
     "barnard59-formats": "0.0.6",

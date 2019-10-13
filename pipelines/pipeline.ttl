@@ -1,4 +1,4 @@
-@base <urn:pipeline:bafu-ld> .
+@base <urn:pipeline:cube-ld> .
 @prefix : <https://pipeline.described.at/> .
 @prefix code: <https://code.described.at/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -20,9 +20,9 @@ _:common-vars :variable
 #
 # ------------------------------
 
-<#Root> a :Pipeline, :Readable;
+<#Root> a :Pipeline;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform>  )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform>  <#serialize> <#write> )
     ] ;
 :variables _:common-vars .
 
@@ -65,10 +65,10 @@ _:common-vars :variable
 #
 # ------------------------------
 
-<#TransformPX> a :Pipeline ;
+<#TransformPX> a :Pipeline, :ReadableObjectMode ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#fixIntegerToDouble> <#serialize> <#write>)
+      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#fixIntegerToDouble> )
     ] ;
   :variables _:common-vars.
 
@@ -130,6 +130,17 @@ _:common-vars :variable
       return quad
     }"""^^code:EcmaScript) .
 
+<#sparqlInsert> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-tdb#update>
+  ];
+  code:arguments [
+    code:name "queries";
+    code:value (
+      "require('fs').readFileSync('sparql/rdf-data-cube-meta.rq').toString()"^^code:EcmaScript
+    )
+  ].
+
 <#serialize> a :Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-formats/ntriples.js#serialize>
@@ -139,4 +150,5 @@ _:common-vars :variable
   code:implementedBy [ a code:EcmaScript;
     code:link <node:fs#createWriteStream>
   ];
-  code:arguments ("target/${px.replace('https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=', '')}.out.nt"^^code:EcmaScriptTemplateLiteral ).
+  code:arguments ("${targetDir}/everything.nt"^^code:EcmaScriptTemplateLiteral) .
+#  code:arguments ("target/${px.replace('https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=', '')}.out.nt"^^code:EcmaScriptTemplateLiteral ) .
