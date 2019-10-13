@@ -1,24 +1,16 @@
-image: node:8
+image: zazukoians/node-java-jena
 before_script:
   - npm install
 
 stages:
   - build
-  - staging
 
-tierseuchen_build:
+pipeline_build:
   stage: build
   script:
     - npm run start
-  # except:
-  #   variables:
-  #       - $CRON
-
-# tierseuchen_staging:
-#   stage: staging
-#   script:
-#     - npm run clean-nt
-#   only:
-#     variables:
-#         - $CRON
+  artifacts:
+    paths:
+      - target/everything.nt
+    expire_in: 1 day
 
