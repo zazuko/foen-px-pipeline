@@ -6,10 +6,6 @@
 _:common-vars :variable
   [ a :Variable; :name "targetDir"; :value "target" ] ,
   [ a :Variable; :name "sourceFile"; :value "source/pxfiles.json" ] ,
-  [ a :Variable; :name "columns"; :value """[{
-        "titles": "Jahr",
-        "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
-      }]""" ] ,
   [ a :Variable; :name "encoding"; :value "iso-8859-15" ] .
   
 # ------------------------------
@@ -22,7 +18,9 @@ _:common-vars :variable
 
 <#Root> a :Pipeline;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#serialize> <#write> )
+#        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#serialize> <#write> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#serialize> <#write> )
+
     ] ;
 :variables _:common-vars .
 
@@ -56,6 +54,7 @@ _:common-vars :variable
   """(p, item) => {
   p.variables.set('px', item.fileurl)
   p.variables.set('baseIRI', item.baseIRI)
+  p.variables.set('columns', item.columns)
 }"""^^code:EcmaScript
   ) . 
   
@@ -68,7 +67,7 @@ _:common-vars :variable
 <#TransformPX> a :Pipeline, :ReadableObjectMode ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#fixIntegerToDouble> )
+      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> )
     ] ;
   :variables _:common-vars.
 
@@ -91,7 +90,7 @@ _:common-vars :variable
     code:value "baseIRI"^^:VariableName
   ], [
     code:name "columns";
-    code:value "JSON.parse(this.variables.get('columns'))"^^code:EcmaScript
+    code:value "columns"^^:VariableName
   ], [
     code:name "encoding";
     code:value "encoding"^^:VariableName
@@ -121,10 +120,10 @@ _:common-vars :variable
   ];
   code:arguments ( """quad => {
       const rdf = require('rdf-ext')
-    if(quad.object.value == '"......"'){
+    if(quad.object.value == '......'){
     return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
     }
-    if(quad.object.value == '"..."'){
+    if(quad.object.value == '...'){
     return rdf.quad(quad.subject, quad.predicate, rdf.literal("NaN", rdf.namedNode('http://www.w3.org/2001/XMLSchema#double')));
     }
       return quad

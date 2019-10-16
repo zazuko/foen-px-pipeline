@@ -1,42 +1,274 @@
 [
     {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_124",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_124/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_123",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_123/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_122",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_122/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_121",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_121/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_106",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_106/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_112",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_112/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_103/"
-    },
-    {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_105",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_105/"
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_101",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_101/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_102",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_102/"
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_102/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            },
+            {
+                "titles": "Holzernte - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Stammholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Industrieholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Energieholz - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": ">> Stück-Energieholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": ">> Hack-Energieholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Übrige Sortimente",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            }
+        ]
     },
     {
-        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_101",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_101/"
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_103/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_105",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_105/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_106",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_106/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_112",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_112/",
+        "columns": [
+            {
+                "titles": "Holzernte - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Stammholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Industrieholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Energieholz - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": ">> Stück-Energieholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": ">> Hack-Energieholz",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Übrige Sortimente",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_121",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_121/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_122",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_122/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_123",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_123/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            },
+            {
+                "titles": "Betriebserträge - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Beiträge von Bund und Kantonen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Beiträge von Gemeinden",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Holzerträge",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Übrige Erträge",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Betriebsaufwände - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Unternehmerleistungen Waldbewirtschaftung",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Personalaufwand",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Abschreibungen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Übriger Betriebsaufwand",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_124",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_124/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            },
+            {
+                "titles": "Investitionen: Einnahmen - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen: Einnahmen aus Beiträgen Bund und Kantone",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen: Einnahmen aus Beiträgen von Gemeinden und Dritten",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen: übrige Einnahmen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen - Total",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen für Wirtschaftsgebäude",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen für Maschinen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Übrige Ausgaben für Investitionen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Investitionen für Erschliessungsanlagen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            },
+            {
+                "titles": "Netto-Investitionen",
+                "datatype": "http://www.w3.org/2001/XMLSchema#double"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_132",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_132/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_133",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_133/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_134",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_134/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
+    },
+    {
+        "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_135",
+        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_135/",
+        "columns": [
+            {
+                "titles": "Jahr",
+                "datatype": "http://www.w3.org/2001/XMLSchema#gYear"
+            }
+        ]
     }
 ]
