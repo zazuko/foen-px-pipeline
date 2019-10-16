@@ -2,6 +2,7 @@
 @prefix : <https://pipeline.described.at/> .
 @prefix code: <https://code.described.at/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 _:common-vars :variable
   [ a :Variable; :name "targetDir"; :value "target" ] ,
@@ -138,6 +139,33 @@ _:common-vars :variable
     code:value (
       "require('fs').readFileSync('sparql/rdf-data-cube-meta.rq').toString()"^^code:EcmaScript
     )
+  ].
+  
+<#inLiteralToList> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <file:./toList#literal>
+  ];
+  code:arguments [
+    code:name "property";
+    code:value <http://www.w3.org/ns/shacl#inLiteral>
+  ], [
+    code:name "targetProperty";
+    code:value <http://www.w3.org/ns/shacl#in>
+  ], [
+    code:name "datatype";
+    code:value xsd:boolean
+  ].
+
+<#inNamedNodeToList> a :Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <file:./toList#namedNode>
+  ];
+  code:arguments [
+    code:name "property";
+    code:value <http://www.w3.org/ns/shacl#inNamedNode>
+  ], [
+    code:name "targetProperty";
+    code:value <http://www.w3.org/ns/shacl#in>
   ].
 
 <#serialize> a :Step;
