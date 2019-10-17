@@ -19,8 +19,8 @@ _:common-vars :variable
 
 <#Root> a :Pipeline;
   :steps [
-#        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#serialize> <#write> )
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#serialize> <#write> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#serialize> <#write> )
+#        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#serialize> <#write> )
 
     ] ;
 :variables _:common-vars .
