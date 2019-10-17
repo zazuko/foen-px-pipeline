@@ -19,7 +19,7 @@ _:common-vars :variable
 
 <#Root> a :Pipeline;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#serialize> <#write> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert>  <#inNamedNodeToList> <#serialize> <#write> )
 #        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#serialize> <#write> )
 
     ] ;
@@ -68,7 +68,7 @@ _:common-vars :variable
 <#TransformPX> a :Pipeline, :ReadableObjectMode ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#inNamedNodeToList> )
+      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> )
     ] ;
   :variables _:common-vars.
 
