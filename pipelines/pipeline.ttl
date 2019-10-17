@@ -138,6 +138,7 @@ _:common-vars :variable
     code:name "queries";
     code:value (
       "require('fs').readFileSync('sparql/rdf-data-cube-meta.rq').toString()"^^code:EcmaScript
+      "require('fs').readFileSync('sparql/cube-from-datacube.rq').toString()"^^code:EcmaScript
     )
   ].
   
