@@ -68,7 +68,7 @@ _:common-vars :variable
 <#TransformPX> a :Pipeline, :ReadableObjectMode ;
   :steps
     [
-      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> )
+      :stepList ( <#fetch> <#parse> <#replaceDotsWithNan> <#inNamedNodeToList> )
     ] ;
   :variables _:common-vars.
 
@@ -165,7 +165,7 @@ _:common-vars :variable
   ];
   code:arguments [
     code:name "property";
-    code:value <http://www.w3.org/ns/shacl#inNamedNode>
+    code:value <http://example.org/in>
   ], [
     code:name "targetProperty";
     code:value <http://www.w3.org/ns/shacl#in>
