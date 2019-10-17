@@ -1,0 +1,27 @@
+BASE <http://environment.ld.admin.ch/foen/>
+
+PREFIX cube: <http://ns.bergnet.org/cube/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+INSERT {
+  ?cube a cube:Cube;
+    cube:observations ?cubeObservation ;
+    cube:observationShape ?cubeShape .
+
+    ?cubeObservation cube:observation ?observation .
+
+} WHERE {
+    {
+        SELECT DISTINCT ?dataset ?observation WHERE {
+            ?observation a qb:Observation ;
+            qb:dataSet ?dataset .
+        } GROUP BY ?dataset ?observation
+    }
+    BIND( URI(CONCAT(STRBEFORE(STR(?dataset), '/dataset'), "/cube")) AS ?cube)
+    BIND( URI(CONCAT(STRBEFORE(STR(?dataset), '/dataset'), "/cube/observation")) AS ?cubeObservation)
+    BIND( URI(CONCAT(STRBEFORE(STR(?dataset), '/dataset'), "/cube/shape")) AS ?cubeShape)
+}

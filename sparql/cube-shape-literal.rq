@@ -1,0 +1,46 @@
+BASE <http://environment.ld.admin.ch/foen/>
+
+PREFIX cube: <http://ns.bergnet.org/cube/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX pcaxis: <http://ns.bergnet.org/cube/scale/>
+
+CONSTRUCT {
+  ?cubeShape a sh:NodeShape, cube:ConstraintShape ;
+    sh:closed true ;
+    sh:property [
+      sh:path ?property ;
+      sh:datatype ?datatype ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:minInclusive ?min ;
+      sh:maxInclusive ?max ;
+  ]
+} WHERE {
+ 
+  SELECT DISTINCT ?cubeShape ?property ?datatype ?min ?max WHERE {
+
+    {
+      SELECT DISTINCT ?cubeShape ?property ?datatype (MIN(?value) AS ?min) (MAX(?value) AS ?max) WHERE {
+        {
+          SELECT DISTINCT ?cubeShape ?observation WHERE {
+            ?cube a cube:Cube ;
+              cube:observations/cube:observation ?observation ;
+              cube:observationShape ?cubeShape .
+          } GROUP BY ?cubeShape ?observation
+        }
+
+        ?observation ?property ?value .
+
+        FILTER(isLiteral(?value))
+        #FILTER( ?value = "NaN"^^<http://www.w3.org/2001/XMLSchema#double> )
+
+        BIND(datatype(?value) AS ?datatype)
+
+      } GROUP BY ?cubeShape ?property ?datatype ?min ?max
+    }
+  } GROUP BY ?cubeShape ?property ?datatype ?min ?max
+}

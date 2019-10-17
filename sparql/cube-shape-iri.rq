@@ -1,0 +1,46 @@
+BASE <http://environment.ld.admin.ch/foen/>
+
+PREFIX cube: <http://ns.bergnet.org/cube/>
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+CONSTRUCT {
+  ?cubeShape a sh:NodeShape, cube:ConstraintShape ;
+    sh:closed true ;
+    sh:property [
+      sh:path ?property ;
+      sh:in ?valueString ;
+      sh:nodeKind sh:IRI 
+    ]
+} WHERE {
+ 
+ {
+# BIND(BNODE(STR(?property)) AS ?b_property)
+
+ }{
+#  SELECT DISTINCT ?cubeShape ?property ?sugus WHERE {
+#    {
+      
+      SELECT DISTINCT ?cubeShape ?property (SHA1(GROUP_CONCAT( STR(?value); separator=' ')) AS ?valueString )  WHERE {
+        {
+          SELECT DISTINCT ?cubeShape ?observation WHERE {
+            ?cube a cube:Cube ;
+              cube:observations/cube:observation ?observation ;
+              cube:observationShape ?cubeShape .
+          } #GROUP BY ?cubeShape ?observation
+        }
+
+        ?observation ?property ?value .
+
+        FILTER(isIRI(?value))
+
+      } GROUP BY ?cubeShape ?property ?value
+      
+    }
+# BIND( SHA1(?valueString) AS ?sugus)
+#  } GROUP BY ?cubeShape ?property ?sugus
+#  }
+}
