@@ -146,7 +146,7 @@ _:common-vars :variable
   
 <#inLiteralToList> a :Step;
   code:implementedBy [ a code:EcmaScript;
-    code:link <ffile:../lib/toList#literal>
+    code:link <file:../lib/toList#literal>
   ];
   code:arguments [
     code:name "property";
@@ -161,7 +161,7 @@ _:common-vars :variable
 
 <#inNamedNodeToList> a :Step;
   code:implementedBy [ a code:EcmaScript;
-    code:link <ffile:../lib/toList#namedNode>
+    code:link <file:../lib/toList#namedNode>
   ];
   code:arguments [
     code:name "property";
