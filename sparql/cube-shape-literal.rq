@@ -8,7 +8,7 @@ PREFIX sh: <http://www.w3.org/ns/shacl#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX pcaxis: <http://ns.bergnet.org/cube/scale/>
 
-CONSTRUCT {
+INSERT {
   ?cubeShape a sh:NodeShape, cube:ConstraintShape ;
     sh:closed true ;
     sh:property [
