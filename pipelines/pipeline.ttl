@@ -171,12 +171,12 @@ _:common-vars :variable
     code:value <http://www.w3.org/ns/shacl#in>
   ].
 
-<#scaleOfMeasure> a p:Step;
+<#scaleOfMeasure> a :Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <file:lib/scaleOfMeasure.js>
   ].
 
-<#flatten> a p:Step;
+<#flatten> a :Step;
   code:implementedBy [ a code:EcmaScript;
     code:link <node:barnard59-base#flatten>
   ].
