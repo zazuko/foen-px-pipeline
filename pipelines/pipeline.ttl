@@ -19,7 +19,7 @@ _:common-vars :variable
 
 <#Root> a :Pipeline;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert>  <#inNamedNodeToList> <#serialize> <#write> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#inNamedNodeToList> <#scaleOfMeasure> <#flatten> <#serialize> <#write> )
 #        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#serialize> <#write> )
 
     ] ;
@@ -169,6 +169,16 @@ _:common-vars :variable
   ], [
     code:name "targetProperty";
     code:value <http://www.w3.org/ns/shacl#in>
+  ].
+
+<#scaleOfMeasure> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <file:lib/scaleOfMeasure.js>
+  ].
+
+<#flatten> a p:Step;
+  code:implementedBy [ a code:EcmaScript;
+    code:link <node:barnard59-base#flatten>
   ].
 
 <#serialize> a :Step;
