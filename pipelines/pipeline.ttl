@@ -173,7 +173,7 @@ _:common-vars :variable
 
 <#scaleOfMeasure> a :Step;
   code:implementedBy [ a code:EcmaScript;
-    code:link <file:lib/scaleOfMeasure.js>
+    code:link <file:../lib/scaleOfMeasure.js>
   ].
 
 <#flatten> a :Step;
