@@ -19,7 +19,9 @@ _:common-vars :variable
 
 <#Root> a :Pipeline;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#inNamedNodeToList> <#scaleOfMeasure> <#flatten> <#serialize> <#write> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#inNamedNodeToList> <#serialize> <#write> )
+#        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#inNamedNodeToList> <#scaleOfMeasure> <#flatten> <#serialize> <#write> )
+
 #        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#serialize> <#write> )
 
     ] ;
@@ -172,9 +174,13 @@ _:common-vars :variable
   ].
 
 <#scaleOfMeasure> a :Step;
-  code:implementedBy [ a code:EcmaScript;
+  code:implementedBy [
+    code:link <node:barnard59-base#map> ;
+    a code:EcmaScript
+  ];
+  code:arguments ( [ a code:EcmaScript;
     code:link <file:../lib/scaleOfMeasure.js>
-  ].
+  ]).
 
 <#flatten> a :Step;
   code:implementedBy [ a code:EcmaScript;
