@@ -9,10 +9,13 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
 INSERT {
   ?cube a cube:Cube;
+
     cube:observations ?cubeObservation ;
     cube:observationShape ?cubeShape .
 
     ?cubeObservation cube:observation ?observation .
+
+    ?dataset rdfs:seeAlso ?cube .
 
 } WHERE {
     {
