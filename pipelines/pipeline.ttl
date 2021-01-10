@@ -19,7 +19,9 @@ _:common-vars :variable
 
 <#Root> a :Pipeline;
   :steps [
-        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#inNamedNodeToList> <#scaleOfMeasure> <#flatten> <#serialize> <#write> )
+#        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#sparqlInsert> <#inNamedNodeToList> <#scaleOfMeasure> <#flatten> <#serialize> <#write> )
+        :stepList ( <#readFile> <#parseJson> <#transformChunk>  <#doTransform> <#inNamedNodeToList> <#scaleOfMeasure> <#flatten> <#serialize> <#write> )
+
     ] ;
 :variables _:common-vars .
 
