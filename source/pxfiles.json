@@ -1,7 +1,7 @@
 [
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_101",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_101/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703010000_101/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -49,7 +49,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_103",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_103/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703010000_103/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -59,7 +59,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_105",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_105/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703010000_105/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -69,7 +69,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703010000_106",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703010000_106/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703010000_106/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -79,7 +79,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_112",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_112/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_112/",
         "columns": [
             {
                 "titles": "Holzernte - Total",
@@ -113,7 +113,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_121",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_121/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_121/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -123,7 +123,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_122",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_122/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_122/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -133,7 +133,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_123",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_123/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_123/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -183,7 +183,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_124",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_124/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_124/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -233,7 +233,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_132",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_132/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_132/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -243,7 +243,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_133",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_133/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_133/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -253,7 +253,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_134",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_134/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_134/",
         "columns": [
             {
                 "titles": "Jahr",
@@ -263,7 +263,7 @@
     },
     {
         "fileurl": "https://www.pxweb.bfs.admin.ch/DownloadFile.aspx?file=px-x-0703030000_135",
-        "baseIRI": "http://environment.ld.admin.ch/foen/px/0703030000_135/",
+        "baseIRI": "https://environment.ld.admin.ch/foen/px/0703030000_135/",
         "columns": [
             {
                 "titles": "Jahr",
