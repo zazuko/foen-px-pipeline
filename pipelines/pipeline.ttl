@@ -95,7 +95,10 @@ _:common-vars :variable
   ], [
     code:name "encoding";
     code:value "encoding"^^:VariableName
-  ].
+  ], [
+    code:name "observer";
+    code:value "https://environment.ld.admin.ch/foen/px/observer"
+  ]. 
   
 <#fixIntegerToDouble> a :Step ;
   code:implementedBy [
