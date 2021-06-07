@@ -1,12 +1,11 @@
-image: zazukoians/node-java-jena
+image: zazukoians/node-java-jena:v3
 before_script:
-  - npm install
-
-stages:
-  - build
+  - npm ci
 
 pipeline_build:
   stage: build
+  environment:
+    name: INT
   script:
     - npm run start
   artifacts:
