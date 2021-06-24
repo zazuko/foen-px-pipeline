@@ -1,3 +1,5 @@
+Deactivated repo, use Gitlab instance for recent version.
+
 ## blv-tierseuche pipelines
 
 To download and process entire dataset simply run:
